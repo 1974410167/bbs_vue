@@ -6,7 +6,7 @@
       </el-button-group>
 
       <el-button type="warning" icon="ChatLineRound" size="small" style="margin-left: 8px" @click="get_comments(post.id)">
-        评论
+        查看评论
       </el-button>
 
       <el-icon :size="20" style="margin-left: 10px; margin-top: 10px;">
@@ -20,6 +20,7 @@
       <el-row style="margin-top: 6px">
         <el-col :span="24">
           <el-card>
+            <el-button type="success" style="margin-left: 900px">发布评论</el-button>
 
             <Comment :comments="this.comments.info.results"></Comment>
             
@@ -63,7 +64,7 @@ export default {
       if (this.is_show.is_request_status == false){
         axios.get("http://127.0.0.1:8000/api/main/comments/?post_id=" + post_id, {
           headers: {
-            "Authorization": " Token 4deb6e4449b8b8d0166707ca028aac81338b6a9a"
+            "Authorization": localStorage.getItem("token")
           }
         }).then(response => {
           this.comments.info = response.data

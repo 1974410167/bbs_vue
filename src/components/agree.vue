@@ -55,7 +55,7 @@ export default {
         agree: true,
       },{
         headers: {
-          "Authorization": " Token 4deb6e4449b8b8d0166707ca028aac81338b6a9a",
+          "Authorization": localStorage.getItem("token"),
           "Content-Type": "application/json;charset=UTF-8"
         }
       }).then(response => {
@@ -69,7 +69,7 @@ export default {
         agree: false,
       },{
         headers: {
-          "Authorization": " Token 4deb6e4449b8b8d0166707ca028aac81338b6a9a",
+          "Authorization": localStorage.getItem("token"),
           "Content-Type": "application/json;charset=UTF-8"
         }
       }).then(response => {
@@ -84,7 +84,7 @@ export default {
         bad: false,
       },{
         headers: {
-          "Authorization": " Token 4deb6e4449b8b8d0166707ca028aac81338b6a9a",
+          "Authorization": localStorage.getItem("token"),
           "Content-Type": "application/json;charset=UTF-8"
         }
       }).then(response => {
@@ -97,7 +97,7 @@ export default {
         bad: true,
       },{
         headers: {
-          "Authorization": " Token 4deb6e4449b8b8d0166707ca028aac81338b6a9a",
+          "Authorization": localStorage.getItem("token"),
           "Content-Type": "application/json;charset=UTF-8"
         }
       }).then(response => {
@@ -106,14 +106,7 @@ export default {
       )
     }
     },
-  // watch:{
-  //   $route(to,from){
-  //     if(to.fullPath!=from.fullPath){
-  //       var topic_id = to.query["topic_id"]
-  //       this.get_posts_data(topic_id);
-  //     }
-  //   }
-  // }
+
 }
 </script>
 

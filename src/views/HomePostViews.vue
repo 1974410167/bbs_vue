@@ -25,7 +25,7 @@ export default {
     get_posts_data(){
       axios.get("http://127.0.0.1:8000/api/main/posts/", {
         headers: {
-          "Authorization": " Token 4deb6e4449b8b8d0166707ca028aac81338b6a9a"
+          "Authorization": localStorage.getItem("token")
         }
       }).then(response => {
         this.posts.info = response.data

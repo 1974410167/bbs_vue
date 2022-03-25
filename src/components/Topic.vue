@@ -5,7 +5,7 @@
     <a style="text-align:justify; text-justify:inter-ideograph; ">
       <h3 v-for="(i, index) in topics.info.results" :key="i" style="margin-left: 35px;">
 
-        <el-badge :value="i.host_number" class="item" type="warning" :max="1000">
+        <el-badge :value="i.host_number" class="item" type="warning" :max="100000">
           <a style="color: #7fff00">{{ index+1 }}</a>. &nbsp;
           <router-link :to="{name:'topic_posts',query: {topic_id:i.id}}" style="text-decoration: none; color: #000000">
             {{ i.name }}

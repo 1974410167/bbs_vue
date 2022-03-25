@@ -7,7 +7,8 @@
              label-position="left"
              label-width="0px"
              class="demo-ruleForm login-page">
-      <h3 class="title">系统登录</h3>
+      <h3 class="title">系统注册</h3>
+
       <el-form-item prop="username">
         <el-input type="text"
                   v-model="ruleForm2.username"
@@ -15,6 +16,15 @@
                   placeholder="用户名"
         ></el-input>
       </el-form-item>
+
+      <el-form-item prop="email">
+        <el-input type="text"
+                  v-model="ruleForm2.email"
+                  auto-complete="off"
+                  placeholder="邮箱"
+        ></el-input>
+      </el-form-item>
+
       <el-form-item prop="password">
         <el-input type="password"
                   v-model="ruleForm2.password"
@@ -23,24 +33,10 @@
         ></el-input>
       </el-form-item>
 
-      <el-checkbox
-          v-model="checked"
-          class="rememberme"
-      >记住密码</el-checkbox>
 
-      <el-row>
-<!--      <el-form-item style="width:50%;">-->
-        <el-col >
-            <el-button type="primary" style="width: 120px" @click="handleSubmit" :loading="logining">用户登录</el-button>
-          <a href="http://127.0.0.1:8000/admin/login/?next=/admin/">
-            <el-button type="primary" style="margin-left: 20px" :loading="logining">管理员登录</el-button>
-          </a>
-          <!--      </el-form-item>-->
-        </el-col>
-<!--      <el-form-item style="width:50%;">-->
-
-      </el-row>
-
+      <el-form-item style="width:100%;">
+        <el-button type="primary" style="width:100%;" @click="handleSubmit" :loading="logining">注册</el-button>
+      </el-form-item>
     </el-form>
 
   </div>
@@ -50,7 +46,7 @@
 import axios from "axios";
 
 export default {
-  name: "Login",
+  name: "register",
 
   data(){
     return {
@@ -58,6 +54,7 @@ export default {
       ruleForm2: {
         username: '',
         password: '',
+        email: ''
       },
       rules2: {
         username: [{required: true, message: 'please enter your account', trigger: 'blur'}],
@@ -68,16 +65,14 @@ export default {
   },
   methods: {
     handleSubmit(event){
-      axios.post("http://127.0.0.1:8000/api/user/login/", {
+      axios.post("http://127.0.0.1:8000/api/user/register/", {
+        "name": this.ruleForm2.name,
         "email": this.ruleForm2.username,
         "password": this.ruleForm2.password
       }).then(response => {
-        let token = response.data.token
-        localStorage.setItem("token", "Token "+ token)
-        this.$router.push('/')
-      })
-    }
-    }
+        alert("注册成功")
+      })}
+  }
 };
 
 </script>

@@ -9,7 +9,7 @@ import {reactive} from "vue";
 import axios from "axios";
 
 export default {
-  name: "TopicPostViews",
+  name: "SearchPosts",
   components: {Posts},
   setup () {
     const posts = reactive({
@@ -21,9 +21,9 @@ export default {
   },
 
   methods: {
-    get_posts_data(topic_id){
+    get_posts_data(search_key){
 
-        axios.get("http://127.0.0.1:8000/api/main/posts/?topic_id=" + topic_id, {
+      axios.get("http://127.0.0.1:8000/api/main/posts/?content__icontains=" + search_key, {
         headers: {
           "Authorization": localStorage.getItem("token")
         }
@@ -32,16 +32,16 @@ export default {
       })}
   },
   created() {
-      let query = this.$route.query
-      var topic_id = query["topic_id"]
-      this.get_posts_data(topic_id)
+    let query = this.$route.query
+    var search_key = query["s_key"]
+    this.get_posts_data(search_key)
   },
 
   watch:{
     $route(to,from){
       if(to.fullPath!=from.fullPath){
-        var topic_id = to.query["topic_id"]
-        this.get_posts_data(topic_id);
+        var search_key = to.query["s_key"]
+        this.get_posts_data(search_key);
       }
     }
   }

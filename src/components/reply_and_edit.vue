@@ -47,7 +47,7 @@ export default {
       if(this.is_show.is_show == false){
         axios.get("http://127.0.0.1:8000/api/main/child_comments/?parent_comment_id=" + parent_comments_id, {
           headers: {
-            "Authorization": " Token 4deb6e4449b8b8d0166707ca028aac81338b6a9a"
+            "Authorization": localStorage.getItem("token")
           }
         }).then(response => {
           this.child_comments.info = response.data

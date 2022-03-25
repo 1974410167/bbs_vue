@@ -5,21 +5,29 @@ import 'element-plus/dist/index.css'
 import Login from "@/components/Login";
 import * as icons from "@element-plus/icons-vue"
 import axios from 'axios'
-// import VueAxios from 'vue-axios'
 import PostViews from "@/views/HomePostViews"
-
+import vuex from "vuex"
 import {createRouter, createWebHistory} from "vue-router"
 import TopicPostViews from "@/views/TopicPostViews";
-
+import Index from "@/views/Index"
 const About = { template: '<div>about</div>' }
-
+import SearchPosts from "@/views/SerachPosts"
+import register from "@/components/register";
+import add_post from "@/components/add_post";
 
 const routes = [
     { path: '/about', component: About },
     { path: '/login', component: Login },
     { path: "/", component: PostViews, name: "home"},
-    { path: '/topic_posts', component: TopicPostViews, name: "topic_posts"}
+    { path: '/topic_posts', component: TopicPostViews, name: "topic_posts"},
+    { path: '/index', component: Index},
+    { path: '/search', component: SearchPosts, name: "search"},
+    { path: '/register', component: register },
+    { path: '/add_post', component: add_post , name: "add_post"},
+
 ]
+
+localStorage.setItem("show_inside", "true")
 
 
 const router = createRouter( {
@@ -28,6 +36,20 @@ const router = createRouter( {
     routes, // `routes: routes` 的缩写
 })
 
+router.beforeEach((to, from, next) => {
+    let token = localStorage.getItem("token");
+    console.log(token, to.path)
+    if (to.path == "/register") {
+        next();
+    }else if(to.path == "/login"){
+        next()
+    }else if(token){
+        next()
+    }else{
+        next("/login")
+    }
+
+})
 
 const app = createApp(App)
 
@@ -38,9 +60,7 @@ app.use(router)
 app.use(ElementPlus)
 app.mount('#app')
 app.use(axios)
+app.use(vuex)
 
-// app.prototype.$axios = axios
-// app.prototype.axios = axios
-// axios.default.baseUrl = 'http://127.0.0.1:8000/'
-axios.defaults.headers.common['Authorization'] = " Token 4deb6e4449b8b8d0166707ca028aac81338b6a9a"
+// axios.defaults.headers.common['Authorization'] = " Token 4deb6e4449b8b8d0166707ca028aac81338b6a9a"
 axios.defaults.headers.post['Content-Type'] = 'application/json;charset=utf-8'; // 配置请求头
