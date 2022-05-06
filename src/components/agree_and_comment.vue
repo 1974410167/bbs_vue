@@ -20,7 +20,9 @@
       <el-row style="margin-top: 6px">
         <el-col :span="24">
           <el-card>
-            <el-button type="success" style="margin-left: 900px">发布评论</el-button>
+            <router-link :to="{name:'add_parentcomment',query: {post_id:post.id, post_content: post.content}}" style="text-decoration: none; color: #000000">
+              <el-button type="success" style="margin-left: 900px" >发布评论</el-button>
+            </router-link>
 
             <Comment :comments="this.comments.info.results"></Comment>
             

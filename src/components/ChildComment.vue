@@ -34,8 +34,12 @@
         <el-icon style="margin-top: 5px; margin-left: 10px" color="blue">
           <edit />
         </el-icon>
-
-        <a style="margin-top: 0px">回复</a>
+        <router-link :to="{name:'add_childcomment_reply',query: {parent_comment_id:comment.parent_comment_id,
+                                                                 childcomment_reply_content: comment.content,
+                                                                 comment_id: comment.id
+        }}" style="text-decoration: none; color: #000000">
+          <a style="margin-top: 0px">回复</a>
+        </router-link>
 
       </el-row>
       <br>

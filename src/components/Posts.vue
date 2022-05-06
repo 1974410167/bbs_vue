@@ -43,6 +43,9 @@ export default {
   props: {
     posts: Object
   },
+  created() {
+    console.log(localStorage.getItem("show_inside"))
+  }
 }
 
 </script>

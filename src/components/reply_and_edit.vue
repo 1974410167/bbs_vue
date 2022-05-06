@@ -8,6 +8,10 @@
     <edit />
   </el-icon>
 
+  <router-link :to="{name:'add_parentcomment_reply',query: {parent_comment_id:comment.id, parent_comment_content: comment.content}}" style="text-decoration: none; color: #000000">
+    <a style="margin-top: 0px">回复</a>
+  </router-link>
+
 
   <a v-if="this.is_show.is_show" style="margin-top: 30px">
     <el-card shadow="hover">

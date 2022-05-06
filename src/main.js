@@ -14,6 +14,9 @@ const About = { template: '<div>about</div>' }
 import SearchPosts from "@/views/SerachPosts"
 import register from "@/components/register";
 import add_post from "@/components/add_post";
+import add_parentcomment from "@/components/add_parentcomment";
+import add_parentcomment_reply from "@/components/add_parentcomment_reply";
+import add_childcomment_reply from "@/components/add_childcomment_reply";
 
 const routes = [
     { path: '/about', component: About },
@@ -24,7 +27,9 @@ const routes = [
     { path: '/search', component: SearchPosts, name: "search"},
     { path: '/register', component: register },
     { path: '/add_post', component: add_post , name: "add_post"},
-
+    { path: '/add_parentcomment', component: add_parentcomment , name: "add_parentcomment"},
+    { path: '/add_parentcomment_reply', component: add_parentcomment_reply , name: "add_parentcomment_reply"},
+    { path: '/add_childcomment_reply', component: add_childcomment_reply , name: "add_childcomment_reply"},
 ]
 
 localStorage.setItem("show_inside", "true")

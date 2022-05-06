@@ -66,11 +66,12 @@ export default {
   methods: {
     handleSubmit(event){
       axios.post("http://127.0.0.1:8000/api/user/register/", {
-        "name": this.ruleForm2.name,
-        "email": this.ruleForm2.username,
+        "name": this.ruleForm2.username,
+        "email": this.ruleForm2.email,
         "password": this.ruleForm2.password
       }).then(response => {
         alert("注册成功")
+        this.$router.push('/login')
       })}
   }
 };

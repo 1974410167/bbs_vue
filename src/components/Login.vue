@@ -74,6 +74,7 @@ export default {
       }).then(response => {
         let token = response.data.token
         localStorage.setItem("token", "Token "+ token)
+        localStorage.setItem("show_inside", "true")
         this.$router.push('/')
       })
     }
